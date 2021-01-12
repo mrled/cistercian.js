@@ -66,7 +66,7 @@ export default function Home() {
           <input
             className="border border-black p-2"
             type="number"
-            value={num}
+            value={isNaN(num) ? "" : num}
             inputMode="numeric"
             onChange={processInputNumber}
           />
