@@ -1,20 +1,27 @@
 import Link from "next/link";
 import React, { ChangeEvent, useState } from "react";
 import SiteHead from "../components/SiteHead";
-import { number2cistercian } from "../lib/cistercian";
+import CistercianNumeralDisplay from "../components/CistercianNumeralDisplay";
 
 export default function Home() {
-  const [num, setNum] = useState<number>(0);
-  const cistercian = number2cistercian(num);
+  const [num, setNum] = useState<number>(NaN);
 
   /* Allow only integers from 0-9999
    */
   const processInputNumber = (event: ChangeEvent<HTMLInputElement>) => {
-    const num = Number(event.target.value);
-    if (isNaN(num)) {
-      console.log("Input error: not a number");
+    console.log(
+      `processInputNumber(): event.target.value: ${
+        event.target.value
+      } ${typeof event.target.value})`
+    );
+    if (event.target.value === "") {
+      console.log("processInputNumber(): input field is empty");
+      setNum(NaN);
       return;
-    } else if (!Number.isInteger(num)) {
+    }
+    const num = Number(event.target.value);
+    console.log(`processInputNumber() => ${num} (${typeof num})`);
+    if (!Number.isInteger(num)) {
       console.log("Input error: non-integer number");
       return;
     } else if (num < 0 || num > 9999) {
@@ -65,16 +72,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="py-8 flex flex-1 flex-col justify-center items-center">
-          <p>
-            The decimal number{" "}
-            <span className="text-lg text-gray-400">{num}</span> in Cistercian
-            notation:
-          </p>
-          <p className="py-8 text-9xl font-cistercian items-center">
-            {cistercian}
-          </p>
-        </div>
+        <CistercianNumeralDisplay num={num} />
       </main>
     </div>
   );
