@@ -1,7 +1,7 @@
-import Link from "next/link";
 import React, { ChangeEvent, useRef, useState } from "react";
 import SiteHead from "../components/SiteHead";
 import CistercianNumeralDisplay from "../components/CistercianNumeralDisplay";
+import { ExternalLink, InternalLink } from "../components/Links";
 
 export default function Home() {
   const inputRef = useRef<HTMLInputElement>();
@@ -63,25 +63,18 @@ export default function Home() {
 
         <p>
           The Cistercians had{" "}
-          <a
-            href="https://en.wikipedia.org/wiki/Cistercian_numerals"
-            className="text-blue-600"
-          >
+          <ExternalLink href="https://en.wikipedia.org/wiki/Cistercian_numerals">
             a cool system for numerals
-          </a>
+          </ExternalLink>
           . Fredrick Brennan made{" "}
-          <a
-            href="https://github.com/ctrlcctrlv/FRBCistercian"
-            className="text-blue-600"
-          >
+          <ExternalLink href="https://github.com/ctrlcctrlv/FRBCistercian">
             a cool font for it
-          </a>
-          . I made this for converting regular arabic numerals to Cistercian
+          </ExternalLink>
+          . I (<ExternalLink href="https://me.micahrl.com">Micah</ExternalLink>)
+          made this for converting regular arabic numerals to Cistercian
           numerals. See the{" "}
-          <Link href="/endnotes">
-            <a className="text-blue-600">end notes</a>
-          </Link>{" "}
-          for information about this site, caveats, how to report bugs, etc.
+          <InternalLink href="/endnotes">end notes</InternalLink> for
+          information about this site, caveats, how to report bugs, etc.
         </p>
 
         <div className="py-4 flex flex-1 flex-col justify-center items-center">
