@@ -126,9 +126,20 @@ export default function Home() {
           A few things to note:
           <ul className="list-disc px-8">
             <li>
-              This doesn't seem to work well in Firefox for me at the moment :/.
-              I have tested it in Safarai for iOS and macOS, and Chrome for
-              macOS. I hope to fix it in Firefox soon, if I can.
+              I have seen glitches that result in rendering bad Cistercian
+              characters in a couple of browsers, namely Firefox on macOS and
+              the browser built-in to the iOS Slack client. I'm not sure what
+              causes this - maybe ligature bugs in some browsers? If you
+              encounter a bug, please take screenshots and describe what you're
+              doing and open a{" "}
+              <a
+                href="https://github.com/mrled/cistercianjs/issues"
+                className="text-blue-600"
+              >
+                bug report
+              </a>
+              , and if you know what might be causing these, I'd appreciate any
+              help.
             </li>
             <li>
               Cistercian characters are not (yet?) part of Unicode, and
