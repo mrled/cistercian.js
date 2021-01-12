@@ -58,7 +58,8 @@ export default function Home() {
           <p className="py-2">Type an integer between 0-9999:</p>
           <input
             className="border border-black p-2"
-            type="text"
+            type="number"
+            pattern="[0-9]*"
             value={num}
             onChange={processInputNumber}
           />
