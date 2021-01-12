@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React from "react";
+import { ExternalLink, InternalLink } from "../components/Links";
 import SiteHead from "../components/SiteHead";
 
 export default function EndNotes() {
@@ -18,12 +18,9 @@ export default function EndNotes() {
           browser built-in to the iOS Slack client. I'm not sure what causes
           this - maybe ligature bugs in some browsers? If you encounter a bug,
           please take screenshots and describe what you're doing and open a{" "}
-          <a
-            href="https://github.com/mrled/cistercianjs/issues"
-            className="text-blue-600"
-          >
+          <ExternalLink href="https://github.com/mrled/cistercianjs/issues">
             bug report
-          </a>
+          </ExternalLink>
           , and if you know what might be causing these, I'd appreciate any
           help.
         </p>
@@ -59,18 +56,13 @@ export default function EndNotes() {
         <h2 className="text-3xl pt-4 ph-4">Development and source code</h2>
         <p className="py-2">
           You can find the source for this project{" "}
-          <a
-            href="https://github.com/mrled/cistercian.js"
-            className="text-blue-600"
-          >
+          <ExternalLink href="https://github.com/mrled/cistercian.js">
             on GitHub
-          </a>
+          </ExternalLink>
           .
         </p>
         <p className="py-8 text-sm">
-          <Link href="/">
-            <a className="text-blue-600">Return home</a>
-          </Link>{" "}
+          <InternalLink href="/">Return home</InternalLink>
         </p>
       </main>
     </>
