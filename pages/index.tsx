@@ -126,6 +126,11 @@ export default function Home() {
           A few things to note:
           <ul className="list-disc px-8">
             <li>
+              This doesn't seem to work well in Firefox for me at the moment :/.
+              I have tested it in Safarai for iOS and macOS, and Chrome for
+              macOS. I hope to fix it in Firefox soon, if I can.
+            </li>
+            <li>
               Cistercian characters are not (yet?) part of Unicode, and
               therefore the FRBCistercian font places them in the Private Use
               Area of Unicode. This means that, while you can copy the
