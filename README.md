@@ -7,7 +7,8 @@ See also
 [Numberphile: The Forgotten Number System](https://www.youtube.com/watch?v=9p55Qgt7Ciw)
 
 Included here is Fredrick Brennan's
-[FRBCistercian OpenType font](https://github.com/ctrlcctrlv/FRBCistercian).
+[FRBCistercian OpenType font](https://github.com/ctrlcctrlv/FRBCistercian),
+which is licensed under the SIL OFL version 1.1.
 
 ## Development
 
