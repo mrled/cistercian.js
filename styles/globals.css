@@ -1,3 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* src: local("FRBCistercian") url("/FRBCistercian.otf") format("opentype"); */
+@font-face {
+  font-family: "FRBCistercian";
+  src: local("FRBCistercian"), url("/FRBCistercian.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+
+.font-cistercian {
+  font-family: FRBCistercian;
+}
+
 html,
 body {
   padding: 0;
