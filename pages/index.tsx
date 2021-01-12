@@ -59,8 +59,8 @@ export default function Home() {
           <input
             className="border border-black p-2"
             type="number"
-            pattern="[0-9]*"
             value={num}
+            inputMode="numeric"
             onChange={processInputNumber}
           />
         </div>
