@@ -17,9 +17,8 @@ export default function CistercianNumeralDisplay({
     return (
       <div className="py-8 flex flex-1 flex-col justify-center items-center">
         <p>
-          The decimal number{" "}
-          <span className="text-lg text-gray-400">{num}</span> in Cistercian
-          notation:
+          The number <span className="text-lg text-gray-400">{num}</span> in
+          Cistercian notation:
         </p>
         <p className="py-8 text-9xl font-cistercian items-center">
           {cistercian}
