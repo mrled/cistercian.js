@@ -1,11 +1,25 @@
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 import SiteHead from "../components/SiteHead";
 import CistercianNumeralDisplay from "../components/CistercianNumeralDisplay";
 import { ExternalLink, InternalLink } from "../components/Links";
 
 export default function Home() {
+  const router = useRouter();
+  const { number: routeNumStr } = router.query;
+  console.log(`Number from router is ${routeNumStr}`);
+  const routeNum = Number(routeNumStr);
   const inputRef = useRef<HTMLInputElement>();
   const [num, setNum] = useState<number>(NaN);
+
+  /* Read the value from the URI
+   */
+  useEffect(() => {
+    if (num === routeNum) {
+      return;
+    }
+    setNum(routeNum);
+  }, [setNum, routeNum]);
 
   /* Set the value in the input box
    */
@@ -17,6 +31,7 @@ export default function Home() {
       return;
     }
     console.log(`setInputVal(${newVal}): updaing input box...`);
+    router.push(`/${newVal}`);
     inputRef.current.value = newVal;
   };
 
