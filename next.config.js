@@ -3,7 +3,7 @@ module.exports = {
     return [
       {
         source: "/",
-        destination: "/0",
+        destination: "/NaN",
       },
       {
         source: "/preview",

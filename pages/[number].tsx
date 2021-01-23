@@ -1,5 +1,5 @@
 /* The home page
- * ... / is redirected to /0 in next.config.js
+ * NOTE: / is redirected to /NaN in next.config.js
  */
 
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
@@ -11,10 +11,16 @@ import CistercianNumeralDisplay from "../components/CistercianNumeralDisplay";
 import { ExternalLink, InternalLink } from "../components/Links";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const num = Number(context.params.number);
+  console.log(JSON.stringify(context.params));
+  console.log(
+    `gssp: number: ${context.params.number} (${typeof context.params.number})`
+  );
+  const rawNumber = context.params.number;
+  // We redirect / to /NaN in next.config.js, which we need to keep separate from /0
+  const gsspNum = rawNumber !== "NaN" ? Number(rawNumber) : NaN;
   return {
     props: {
-      num,
+      gsspNum,
     },
   };
 };
@@ -32,9 +38,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
  *      Needed to bind the value of the input box.
  */
 type HomeProps = {
-  num: number;
+  gsspNum: number;
 };
-export default function Home({ num: gsspNum }: HomeProps) {
+export default function Home({ gsspNum }: HomeProps) {
   const router = useRouter();
   const { number: routeNumStr } = router.query;
   const routeNum = Number(routeNumStr);
