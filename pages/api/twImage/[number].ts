@@ -1,4 +1,4 @@
 import { previewImageApiHandlerHof } from "lib/preview";
 
-const handler = previewImageApiHandlerHof(320, 240);
+const handler = previewImageApiHandlerHof(1200, 675);
 export default handler;
