@@ -1,4 +1,7 @@
-import { previewImageApiHandlerHof } from "lib/preview";
+import { previewImageApiHandlerHof, previewImageDimensions } from "lib/preview";
 
-const handler = previewImageApiHandlerHof(1200, 628);
+const handler = previewImageApiHandlerHof(
+  previewImageDimensions.ogImage.width,
+  previewImageDimensions.ogImage.height
+);
 export default handler;

@@ -2,6 +2,7 @@ import Head from "next/head";
 import React from "react";
 
 import { getAppUri } from "lib/appUri";
+import { previewImageDimensions } from "lib/preview";
 
 type SiteHeadProps = {
   num?: number | undefined;
@@ -31,6 +32,8 @@ export default function SiteHead({ num }: SiteHeadProps) {
   const twTitle = pageTitle;
   const twDesc = pageDesc;
   const twAccount = "@mrled";
+  const twImageWidth = String(previewImageDimensions.twitterImage.width);
+  const twImageHeight = String(previewImageDimensions.twitterImage.height);
 
   return (
     <Head>
@@ -70,8 +73,8 @@ export default function SiteHead({ num }: SiteHeadProps) {
       <meta name="twitter:image:alt" content={imgAlt} />
       <meta name="twitter:title" content={twTitle} />
       <meta name="twitter:description" content={twDesc} />
-      <meta name="twitter:image:width" content="512" />
-      <meta name="twitter:image:height" content="512" />
+      <meta name="twitter:image:width" content={twImageWidth} />
+      <meta name="twitter:image:height" content={twImageHeight} />
     </Head>
   );
 }

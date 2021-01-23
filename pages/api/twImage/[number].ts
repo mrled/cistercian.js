@@ -1,4 +1,7 @@
-import { previewImageApiHandlerHof } from "lib/preview";
+import { previewImageApiHandlerHof, previewImageDimensions } from "lib/preview";
 
-const handler = previewImageApiHandlerHof(1200, 675);
+const handler = previewImageApiHandlerHof(
+  previewImageDimensions.twitterImage.width,
+  previewImageDimensions.twitterImage.height
+);
 export default handler;
