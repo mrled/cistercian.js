@@ -1,25 +1,58 @@
+/* The home page
+ * ... / is redirected to /0 in next.config.js
+ */
+
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
+
 import SiteHead from "../components/SiteHead";
 import CistercianNumeralDisplay from "../components/CistercianNumeralDisplay";
 import { ExternalLink, InternalLink } from "../components/Links";
 
-export default function Home() {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const num = Number(context.params.number);
+  return {
+    props: {
+      num,
+    },
+  };
+};
+
+/* The home page component
+ *
+ * We deal with THREE items that represent the number:
+ *    gsspNum:  From the response to the server
+ *      Needed so the server sends the appropriate argument to <SiteHead>.
+ *    routeNum: From the NextJS route
+ *      Needed so that client-side routing works as expected.
+ *      That is, changing the number in the input box changes the route in the URL bar,
+ *      but does not have to talk to the server to display the change in the client.
+ *    numState: React state
+ *      Needed to bind the value of the input box.
+ */
+type HomeProps = {
+  num: number;
+};
+export default function Home({ num: gsspNum }: HomeProps) {
   const router = useRouter();
   const { number: routeNumStr } = router.query;
-  console.log(`Number from router is ${routeNumStr}`);
   const routeNum = Number(routeNumStr);
   const inputRef = useRef<HTMLInputElement>();
-  const [num, setNum] = useState<number>(NaN);
+  const [numState, setNumState] = useState<number>(NaN);
+
+  console.log(
+    `<Home> component: gssp num: ${gsspNum}, routeNum: ${routeNum}, useState num: ${numState}`
+  );
 
   /* Read the value from the URI
    */
   useEffect(() => {
-    if (num === routeNum) {
+    if (numState === routeNum) {
       return;
     }
-    setNum(routeNum);
-  }, [setNum, routeNum]);
+    setNumState(routeNum);
+  }, [setNumState, routeNum]);
 
   /* Set the value in the input box
    */
@@ -45,12 +78,12 @@ export default function Home() {
           "processInputNumber(): invalid character added to input field"
         );
         // Set the text box contents to the old value -- ignore the new invalid character
-        setInputVal(String(num));
-        setNum(num);
+        setInputVal(String(numState));
+        setNumState(numState);
       } else {
         console.log("processInputNumber(): input field is empty");
         setInputVal("");
-        setNum(NaN);
+        setNumState(NaN);
       }
       return;
     }
@@ -66,12 +99,12 @@ export default function Home() {
     // Why setInputVal here with a string?
     // This normalizes the number, so that e.g. 01 becomes just 1.
     setInputVal(String(newNum));
-    setNum(newNum);
+    setNumState(newNum);
   };
 
   return (
     <div className="">
-      <SiteHead num={num} />
+      <SiteHead num={gsspNum} />
 
       <main className="p-8 flex flex-1 flex-col justify-center items-center">
         <h1 className="text-6xl py-4">Count like a Cistercian</h1>
@@ -98,14 +131,14 @@ export default function Home() {
             ref={inputRef}
             className="border border-black p-2"
             type="number"
-            value={isNaN(num) ? "" : num}
+            value={isNaN(numState) ? "" : numState}
             inputMode="numeric"
             pattern="\d*"
             onChange={processInputNumber}
           />
         </div>
 
-        <CistercianNumeralDisplay num={num} />
+        <CistercianNumeralDisplay num={numState} />
       </main>
     </div>
   );

@@ -8,6 +8,7 @@ type SiteHeadProps = {
 };
 export default function SiteHead({ num }: SiteHeadProps) {
   const validNum = typeof num !== "undefined" && !isNaN(num);
+  console.log(`<SiteHead num=${num} />: num is valid: ${validNum}`);
   const ogUrl = validNum ? `${getAppUri()}/${num}` : getAppUri();
   const ogImage = validNum ? `/api/ogImage/${num}` : "/api/ogImage/default";
   const twImage = validNum ? `/api/twImage/${num}` : "/api/twImage/default";
