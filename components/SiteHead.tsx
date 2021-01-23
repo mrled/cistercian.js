@@ -4,7 +4,7 @@ import React from "react";
 import { getAppUri } from "lib/appUri";
 
 type SiteHeadProps = {
-  num: number | undefined;
+  num?: number | undefined;
 };
 export default function SiteHead({ num }: SiteHeadProps) {
   const validNum = typeof num !== "undefined" && !isNaN(num);
