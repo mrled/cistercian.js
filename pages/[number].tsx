@@ -138,7 +138,9 @@ export default function Home({ num: gsspNum }: HomeProps) {
           />
         </div>
 
-        <CistercianNumeralDisplay num={numState} />
+        <div className="py-8">
+          <CistercianNumeralDisplay num={numState} />
+        </div>
       </main>
     </div>
   );
