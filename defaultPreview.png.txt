@@ -1,0 +1,3 @@
+WARNING: you must manually make a base64 of this image and save it to
+lib/previewDefaultImage.ts.
+
