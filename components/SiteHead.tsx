@@ -1,8 +1,8 @@
 import Head from "next/head";
 import React from "react";
 
-import { getAppUri } from "lib/appUri";
-import { previewImageDimensions } from "lib/preview";
+import { getAppUri } from "lib/server/appUri";
+import { previewImageDimensions } from "lib/all/previewImageDimensions";
 
 type SiteHeadProps = {
   num?: number | undefined;

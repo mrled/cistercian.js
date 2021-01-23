@@ -1,4 +1,4 @@
-import { number2cistercian } from "../lib/cistercian";
+import { number2cistercian } from "lib/all/cistercian";
 
 type CistercianNumeralDisplayProps = {
   num: number;

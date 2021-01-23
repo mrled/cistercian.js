@@ -6,9 +6,9 @@ import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 
-import SiteHead from "../components/SiteHead";
-import CistercianNumeralDisplay from "../components/CistercianNumeralDisplay";
-import { ExternalLink, InternalLink } from "../components/Links";
+import SiteHead from "components/SiteHead";
+import CistercianNumeralDisplay from "components/CistercianNumeralDisplay";
+import { ExternalLink, InternalLink } from "components/Links";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   console.log(JSON.stringify(context.params));

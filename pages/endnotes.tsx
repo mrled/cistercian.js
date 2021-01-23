@@ -1,6 +1,7 @@
 import React from "react";
-import { ExternalLink, InternalLink } from "../components/Links";
-import SiteHead from "../components/SiteHead";
+
+import { ExternalLink, InternalLink } from "components/Links";
+import SiteHead from "components/SiteHead";
 
 export default function EndNotes() {
   return (

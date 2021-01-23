@@ -6,7 +6,7 @@ import puppeteer from "puppeteer";
 import chromium from "chrome-aws-lambda";
 
 import { getAppUri } from "./appUri";
-import defaultImagePreview from "lib/previewDefaultImage";
+import defaultImagePreview from "lib/all/previewDefaultImage";
 
 async function launchBrowser(
   puppeteerLaunchArgs: any
@@ -97,16 +97,3 @@ export function previewImageApiHandlerHof(width: number, height: number) {
 
   return previewImage;
 }
-
-/* Dimensions for various images
- */
-export const previewImageDimensions = {
-  ogImage: {
-    width: 1200,
-    height: 628,
-  },
-  twitterImage: {
-    width: 1200,
-    height: 675,
-  },
-};
