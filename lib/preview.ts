@@ -3,6 +3,7 @@
 import fs from "fs";
 
 import puppeteer from "puppeteer";
+import chromium from "chrome-aws-lambda";
 
 import { getAppUri } from "./appUri";
 
@@ -14,6 +15,27 @@ function getScreenshotPath(name: number, width: number, height: number) {
     return defaultScreenshotPath;
   }
   return `_puppeteer_screenshots_/${name}_${width}x${height}.png`;
+}
+
+async function launchBrowser(
+  puppeteerLaunchArgs: any
+): Promise<puppeteer.Browser> {
+  if (process.env.VERCEL_ENV) {
+    console.log("Running on Vercel, will use chrome-aws-lambda");
+    const browser = await puppeteer.launch({
+      args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
+      headless: true,
+      ignoreHTTPSErrors: true,
+      ...puppeteerLaunchArgs,
+    });
+    return browser;
+  } else {
+    console.log("Not running on Vercel, will use default Chrome");
+    const browser = await puppeteer.launch();
+    return browser;
+  }
 }
 
 async function takeScreenshot(num: number, width: number, height: number) {
@@ -29,7 +51,7 @@ async function takeScreenshot(num: number, width: number, height: number) {
   const uriToRender = `${appUri}/preview/${num}`;
   console.log(`api/preview/${num} will make a screenshot of ${uriToRender}`);
 
-  const browser = await puppeteer.launch();
+  const browser = await launchBrowser({});
   const page = await browser.newPage();
   page.setViewport({
     width: width,
