@@ -1,12 +1,12 @@
 /* Functionality for generating preview images like og:image and twitter:image
  */
+import { NextApiRequest, NextApiResponse } from "next";
+
 import puppeteer from "puppeteer";
 import chromium from "chrome-aws-lambda";
 
 import { getAppUri } from "./appUri";
 import defaultImagePreview from "lib/previewDefaultImage";
-
-export const defaultScreenshotPath = "defaultPreview.png";
 
 async function launchBrowser(
   puppeteerLaunchArgs: any
@@ -67,4 +67,27 @@ export async function getScreenshot(
     console.error(`Encountered error ${err}, returning default image`);
     return defaultImagePreview;
   }
+}
+
+/* A higher-order function that returns an image preview handler
+ *
+ * The width and height determine the dimensions of the preview image to return.
+ */
+export function previewImageApiHandlerHof(width: number, height: number) {
+  /* The image preview handler
+   */
+  const previewImage = async (req: NextApiRequest, res: NextApiResponse) => {
+    const num = Number(req.query.number as string);
+    const preview = await getScreenshot(num, width, height);
+    res.setHeader("Content-Type", "image/png");
+    const oneYearInSeconds = 31536000; // Max allowed for s-maxage on Vercel
+    res.setHeader(
+      "Cache-Control",
+      `s-maxage=${oneYearInSeconds}, immutable, public`
+    );
+    res.statusCode = 200;
+    res.end(preview);
+  };
+
+  return previewImage;
 }
