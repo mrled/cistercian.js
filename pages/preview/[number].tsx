@@ -7,7 +7,7 @@ import CistercianNumeralDisplay from "components/CistercianNumeralDisplay";
 export default function BareNumber({}) {
   const router = useRouter();
   return (
-    <div className="py-1">
+    <div className="py-4">
       <CistercianNumeralDisplay num={Number(router.query.number)} />
     </div>
   );
