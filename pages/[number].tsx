@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <div className="">
-      <SiteHead />
+      <SiteHead num={num} />
 
       <main className="p-8 flex flex-1 flex-col justify-center items-center">
         <h1 className="text-6xl py-4">Count like a Cistercian</h1>
