@@ -82,7 +82,9 @@ export async function getScreenshot(
       return newScreenshot;
     }
   } catch (err) {
+    const cwdFiles = await fs.promises.readdir(process.cwd());
     console.error(`Encountered error ${err}, returning default image`);
+    console.log([`Node CWD: ${process.cwd()}`] + cwdFiles.join("\n"));
     const defaultPreviewImage = fs.readFileSync(defaultScreenshotPath);
     return defaultPreviewImage;
   }
