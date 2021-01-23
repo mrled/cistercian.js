@@ -68,7 +68,7 @@ export default function SiteHead({ num }: SiteHeadProps) {
       <meta name="twitter:site" content={twAccount} />
       <meta name="twitter:creator" content={twAccount} />
       <meta property="og:image" content={ogImage} />
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={twImage} />
       <meta name="twitter:image:alt" content={imgAlt} />
       <meta name="twitter:title" content={twTitle} />
