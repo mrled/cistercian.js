@@ -9,9 +9,16 @@ type SiteHeadProps = {
 export default function SiteHead({ num }: SiteHeadProps) {
   const validNum = typeof num !== "undefined" && !isNaN(num);
   console.log(`<SiteHead num=${num} />: num is valid: ${validNum}`);
-  const ogUrl = validNum ? `${getAppUri()}/${num}` : getAppUri();
+
+  const appUri = getAppUri();
+  const ogUrl = validNum ? `${appUri}/${num}` : appUri;
+
+  // og:image can be a RELATIVE path
   const ogImage = validNum ? `/api/ogImage/${num}` : "/api/ogImage/default";
-  const twImage = validNum ? `/api/twImage/${num}` : "/api/twImage/default";
+  // twitter:image must be an ABSOLUTE URL
+  const twImgRel = validNum ? `/api/twImage/${num}` : "/api/twImage/default";
+  const twImage = appUri + twImgRel;
+
   const pageDesc = validNum
     ? `A representation of ${num} in Cistercian numerals`
     : "A widget for playing with Cistercian numerals";
