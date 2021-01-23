@@ -42,9 +42,15 @@ async function takeScreenshot(num: number, width: number, height: number) {
 
   const browser = await launchBrowser({});
   const page = await browser.newPage();
+
+  // This is scaled to fill up most of the image with the content
+  // It was adjusted manually
+  const scaleFactor = 3;
+
   page.setViewport({
-    width: width,
-    height: height,
+    width: Math.floor(width / scaleFactor),
+    height: Math.floor(height / scaleFactor),
+    deviceScaleFactor: scaleFactor,
   });
   await page.goto(uriToRender);
   const screenshot = await page.screenshot();
