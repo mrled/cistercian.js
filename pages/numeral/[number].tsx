@@ -70,7 +70,7 @@ export default function Home({ gsspNum }: HomeProps) {
       return;
     }
     console.log(`setInputVal(${newVal}): updaing input box...`);
-    router.replace(`/${newVal}`, undefined, { scroll: false });
+    router.replace(`/numeral/${newVal}`, undefined, { scroll: false });
     inputRef.current.value = newVal;
   };
 
