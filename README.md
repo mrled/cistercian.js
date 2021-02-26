@@ -1,4 +1,4 @@
-# Talk like a Cistercian
+# Count like a Cistercian
 
 **<https://cistercian.micahrl.com>**
 
