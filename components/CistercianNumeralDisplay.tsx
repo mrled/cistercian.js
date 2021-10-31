@@ -16,8 +16,8 @@ export default function CistercianNumeralDisplay({
     const cistercian = number2cistercian(num);
     return (
       <div className="flex flex-1 flex-col justify-center items-center">
-        <p>
-          The number <span className="text-lg text-gray-400">{num}</span> in
+        <p className="text-2xl text-gray-400">
+          The number <span className="text-bold text-black">{num}</span> in
           Cistercian notation:
         </p>
         <p className="py-8 text-9xl font-cistercian items-center">
