@@ -66,7 +66,7 @@ export default function EndNotes() {
         <h2 className="text-3xl pt-4 ph-4">See also</h2>
         <p className="py-2">
           You might also be interested in:
-          <ul>
+          <ul className="list-disc ml-4">
             <li>
               <ExternalLink href="https://github.com/mrled/hugo-theme-cistercian">
                 hugo-theme-cistercian
