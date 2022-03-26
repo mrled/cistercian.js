@@ -62,6 +62,33 @@ export default function EndNotes() {
           </ExternalLink>
           .
         </p>
+
+        <h2 className="text-3xl pt-4 ph-4">See also</h2>
+        <p className="py-2">
+          You might also be interested in:
+          <ul>
+            <li>
+              <ExternalLink href="https://github.com/mrled/hugo-theme-cistercian">
+                hugo-theme-cistercian
+              </ExternalLink>
+              , a utility theme I wrote for the Hugo static site generator for
+              using Cistercian numerals.
+            </li>
+            <li>
+              <ExternalLink href="https://disquisition.micahrl.com/research">
+                Disquisition
+              </ExternalLink>
+              , a blog that uses my Hugo plugin.
+            </li>
+            <li>
+              <ExternalLink href="https://me.micahrl.com/blog/failed-experiment-python-pillow-cistercian-font/">
+                A failed experiment: Python Pillow and a Cistercian font
+              </ExternalLink>
+              , an abandoned attempt to write Cistercian numerals directly to
+              iamge files.
+            </li>
+          </ul>
+        </p>
         <p className="py-8 text-sm">
           <InternalLink href="/">Return home</InternalLink>
         </p>
